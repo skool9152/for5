@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación en SENATI</title>
+    <link rel="stylesheet" href="estilo5.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Educación en SENATI</h2>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="gmail">Gmail Estudiantil:</label>
+        <input type="email" id="gmail" required>
+
+        <label for="ciclo">Seleccionar Ciclo Actual:</label>
+        <select id="ciclo" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="ciclo1">Ciclo 1</option>
+            <option value="ciclo2">Ciclo 2</option>
+            <option value="ciclo3">Ciclo 3</option>
+            <option value="ciclo4">Ciclo 4</option>
+            <option value="ciclo5">Ciclo 5</option>
+            <option value="ciclo6">Ciclo 6</option>
+        </select>
+
+        <label>¿Estás satisfecho con la educación?</label>
+        <select id="satisfaccion" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="por-que">¿Por qué?</label>
+        <textarea id="por-que" rows="4"></textarea>
+
+        <label>¿Tuviste algún inconveniente/problema con un profesor?</label>
+        <select id="inconveniente" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="problema">Si tu respuesta es sí. ¿Podrías decirnos cuál es?</label>
+        <textarea id="problema" rows="4" disabled></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<div class="container">
+    <!-- Generación de cuadrados y puntos para la animación -->
+    <script>
+        var cells = 12 * 12; // 144 dots
+        var container = document.querySelector('.container');
+
+        for (var i = 0; i < cells; i++) {
+            var square = document.createElement('div');
+            square.classList.add('square');
+
+            var dot1 = document.createElement('div');
+            dot1.classList.add('dot');
+            square.appendChild(dot1);
+
+            var dot2 = document.createElement('div');
+            dot2.classList.add('dot');
+            square.appendChild(dot2);
+
+            container.appendChild(square);
+        }
+    </script>
+</div>
+
+<script>
+    // Habilitar o deshabilitar el campo de problema según la respuesta
+    document.getElementById('inconveniente').addEventListener('change', function() {
+        const problemaInput = document.getElementById('problema');
+        if (this.value === 'si') {
+            problemaInput.disabled = false;
+        } else {
+            problemaInput.disabled = true;
+            problemaInput.value = ''; // Limpiar el campo si se selecciona 'No'
+        }
+    });
+</script>
+
+</body>
+</html>
